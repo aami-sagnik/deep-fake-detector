@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+*.cache
+.mypy_cache/
+.ruff_cache/
+
+# Logs
+*.log
+logs/
+
+# Media Files (large, don't commit)
+data/sample_videos/
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.jpg
+*.jpeg
+*.png
+
+# Model Cache
+.cache/deep-fake-detector/
+~/.cache/deep-fake-detector/
+~/.data/deep-fake-detector/
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db

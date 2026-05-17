@@ -1,0 +1,106 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deep-fake-detector"
+version = "0.1.0"
+description = "A modular deep-fake detection system using Gemma 4 as orchestrator with specialized micro-expert models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["deepfake", "detection", "forensics", "gemma", "ml"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "openai>=1.0.0",
+    "gradio>=4.0.0",
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "torchaudio>=2.2.0",
+    "transformers>=4.35.0",
+    "librosa>=0.10.0",
+    "soundfile>=0.12.0",
+    "opencv-python>=4.8.0",
+    "numpy>=1.24.0",
+    "scipy>=1.11.0",
+    "mediapy>=0.1.0",
+    "pillow>=10.0.0",
+    "python-dotenv>=1.0.0",
+    "ffmpeg-python>=0.2.0",
+    "requests>=2.31.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "tqdm>=4.66.0",
+    "opencv-python-headless>=4.13.0.92",
+]
+
+# Note: Installing CUDA-enabled PyTorch may require using the PyTorch package index
+# for the CUDA 12.8 wheels. Example (Windows/PowerShell):
+#
+# python -m pip install --index-url https://download.pytorch.org/whl/cu128 \
+#     torch torchvision torchaudio --upgrade
+#
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.9.0",
+    "ruff>=0.11.0",
+    "mypy>=1.5.0",
+    "ipython>=8.15.0",
+]
+
+[project.scripts]
+deepfake-detector = "deep_fake_detector.main:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.9.0",
+    "ruff>=0.11.0",
+]
+
+[tool.uv.sources]
+"torch" = [
+    { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+"torchvision" = [
+    { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+"torchaudio" = [
+    { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "W"]
+ignore = ["E501"]  # Line too long, handled by black
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false

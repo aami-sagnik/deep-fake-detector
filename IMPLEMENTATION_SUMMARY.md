@@ -2,7 +2,7 @@
 
 ## Project Summary
 
-A comprehensive, production-ready deep-fake detection system has been successfully implemented using Python and the `uv` package manager. The system uses Gemma 4 (via Gemini 1.5 Pro) as an intelligent orchestrator coordinating specialized "micro-expert" models for forensic analysis.
+A comprehensive, production-ready deep-fake detection system using Gemma 4 and Python. The system uses Gemma 4 as an intelligent orchestrator coordinating specialized "micro-expert" models for forensic analysis.
 
 ## What's Been Created
 
@@ -37,11 +37,10 @@ A comprehensive, production-ready deep-fake detection system has been successful
   - Suspicious property detection
 
 **Phase 3: Gemma 4 Orchestrator** ✓
-- `orchestrator.py` implements Gemini 1.5 Pro integration
+- `orchestrator.py` implements Gemma 4 integration
 - Intelligent function calling to coordinate specialists
 - Weighted confidence calculation
 - Conflict resolution and forensic reasoning
-- Mock mode for testing without API key
 
 **Phase 4: Media Processing** ✓
 - `media_processor.py` handles video/audio extraction
@@ -64,12 +63,6 @@ A comprehensive, production-ready deep-fake detection system has been successful
 - Results visualization
 - JSON report export
 
-**Phase 7: Testing & CLI** ✓
-- `tests/` directory with unit tests
-- `main.py` CLI with multiple modes
-- Test fixtures and configurations
-- pytest integration
-
 ### 📁 Project Structure
 
 ```
@@ -90,12 +83,8 @@ deep-fake-detector/
 │       ├── audio.py                # Wav2Vec2-based analysis
 │       ├── biometric.py            # MediaPipe-based analysis
 │       └── metadata.py             # FFprobe-based analysis
-├── tests/
-│   ├── conftest.py                 # pytest configuration & fixtures
-│   ├── test_specialists.py         # Specialist model tests
-│   └── test_orchestrator.py        # Orchestrator tests
 ├── data/
-│   └── sample_videos/              # Test media directory
+│   └── sample_images/              # Test media directory
 ├── pyproject.toml                  # Project config (uv, build, dependencies)
 ├── .env.example                    # Environment template
 ├── .gitignore                      # Git ignore rules
@@ -106,7 +95,7 @@ deep-fake-detector/
 ## Key Features
 
 ### 🧠 Intelligent Orchestration
-- Gemma 4 (Gemini 1.5 Pro) as "Chief Forensic Investigator"
+- Gemma 4 as "Chief Forensic Investigator"
 - 256K context window for comprehensive analysis
 - Function calling to coordinate specialists
 - Reasoning about conflicting signals
@@ -139,9 +128,9 @@ deep-fake-detector/
 
 ```
 Deep-Fake Detector
-├── LLM Orchestration: Google Generative AI (Gemini 1.5 Pro)
-├── Visual Analysis: torch, torchvision, transformers (ViT)
-├── Audio Analysis: librosa, transformers (Wav2Vec2)
+├── LLM Orchestration: Gemma 4
+├── Visual Analysis: torch, torchvision, transformers (buildborderless/CommunityForensics-DeepfakeDet-ViT)
+├── Audio Analysis: librosa, transformers (facebook/wav2vec2-base-960h)
 ├── Biometric Analysis: MediaPipe
 ├── Metadata: FFmpeg/FFprobe, opencv-python
 ├── Web UI: Gradio
@@ -153,7 +142,7 @@ Deep-Fake Detector
 ## Dependencies
 
 **Core Dependencies** (see pyproject.toml):
-- `google-generativeai` - Gemma/Gemini access
+- `openai` - Gemma 4 LLM access (hosted using Ollama)
 - `torch`, `torchvision` - Deep learning framework
 - `transformers` - Pre-trained models (ViT, Wav2Vec2)
 - `gradio` - Web interface
@@ -206,7 +195,6 @@ print(f"Confidence: {report.overall_confidence:.2%}")
 ## Configuration
 
 Via `.env` file:
-- `GOOGLE_API_KEY` - Required for Gemma 4
 - `DEVICE` - 'cuda' or 'cpu'
 - `MAX_VIDEO_DURATION` - Video length limit
 - `FRAME_SAMPLE_RATE` - Frame sampling interval

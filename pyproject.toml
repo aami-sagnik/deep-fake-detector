@@ -65,8 +65,8 @@ dev = [
 [project.scripts]
 deepfake-detector = "deep_fake_detector.main:main"
 
-[tool.uv]
-dev-dependencies = [
+[project.dependency-groups.dev]
+dependencies = [
     "pytest>=7.4.0",
     "pytest-asyncio>=0.21.0",
     "black>=23.9.0",

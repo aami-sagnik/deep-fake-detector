@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     """Application configuration from environment variables."""
 
     # Model Settings
-    visual_model: str = "google/vit-base-patch16-224"
+    visual_model: str = "buildborderless/CommunityForensics-DeepfakeDet-ViT"
     audio_model: str = "facebook/wav2vec2-base-960h"
     device: str = "cuda"  # 'cuda' or 'cpu'
 
